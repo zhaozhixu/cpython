@@ -136,10 +136,15 @@ class Family(Node):
     size: str  # Variable giving the cache size in code units
     members: list[str]
 
+@dataclass
+class LabelDef(Node):
+    name: str
+    spilled: bool
+    block: Block
 
 class Parser(PLexer):
     @contextual
-    def definition(self) -> InstDef | Super | Macro | Family | None:
+    def definition(self) -> InstDef | Super | Macro | Family | LabelDef | None:
         if inst := self.inst_def():
             return inst
         if super := self.super_def():
@@ -148,6 +153,21 @@ class Parser(PLexer):
             return macro
         if family := self.family_def():
             return family
+        if label := self.label_def():
+            return label
+
+    @contextual
+    def label_def(self) -> LabelDef | None:
+        spilled = False
+        # if self.expect(lx.SPILLED):
+        #     spilled = True
+        if self.expect(lx.LABEL):
+            if self.expect(lx.LPAREN):
+                if tkn := self.expect(lx.IDENTIFIER):
+                    if self.expect(lx.RPAREN):
+                        if block := self.block():
+                            return LabelDef(tkn.text, spilled, block)
+        return None
 
     @contextual
     def inst_def(self) -> InstDef | None:

@@ -15,7 +15,7 @@ import typing
 
 import lexer as lx
 import parser
-from parser import StackEffect
+from parser import LabelDef, StackEffect
 
 HERE = os.path.dirname(__file__)
 ROOT = os.path.join(HERE, "../..")
@@ -295,6 +295,17 @@ class Instruction:
                         f'{self.cache_offset}, "incorrect cache size");'
                     )
 
+        # We need to ifdef it because this breaks platforms
+        # without computed gotos/tail calling.
+        out.emit(f"#if Py_TAIL_CALL_INTERP")
+        out.emit(f"int opcode = {self.name};")
+        out.emit(f"(void)(opcode);")
+        out.emit(f"#endif")
+        out.emit(f"_Py_CODEUNIT* const this_instr = next_instr;")
+        out.emit("(void)this_instr;")
+        out.emit(f"INSTRUCTION_START({self.name});")
+        # out.emit(f"printf(\"execute {self.name}\\n\");")
+
         # Write input stack effect variable declarations and initializations
         ieffects = list(reversed(self.input_effects))
         for i, ieffect in enumerate(ieffects):
@@ -415,10 +426,10 @@ class Instruction:
                     label = f"pop_{ninputs}_{label}"
                 if symbolic:
                     out.write_raw(
-                        f"{space}if ({cond}) {{ STACK_SHRINK({symbolic}); goto {label}; }}\n"
+                        f"{space}if ({cond}) {{ STACK_SHRINK({symbolic}); JUMP_TO_LABEL({label}); }}\n"
                     )
                 else:
-                    out.write_raw(f"{space}if ({cond}) goto {label};\n")
+                    out.write_raw(f"{space}if ({cond}) JUMP_TO_LABEL({label});\n")
             elif m := re.match(r"(\s*)DECREF_INPUTS\(\);\s*(?://.*)?$", line):
                 out.reset_lineno()
                 space = extra + m.group(1)
@@ -434,6 +445,22 @@ class Instruction:
                     else:
                         decref = "XDECREF" if ieff.cond else "DECREF"
                         out.write_raw(f"{space}Py_{decref}({ieff.name});\n")
+            elif m := re.search(r'goto\s+(\w+)', line):
+                if m.group(1) in ['end_for_iter_list', 'end_for_iter_tuple']:
+                    out.write_raw(extra + line)
+                else:
+                    line = re.sub(r'goto\s+(\w+)', f"JUMP_TO_LABEL({m.group(1)})", line)
+                    out.write_raw(extra + line)
+            elif m := re.match(r'(\s*)DEOPT_IF\((.+?),\s*(\w+)\);', line):
+                out.reset_lineno()
+                space = extra + m.group(1)
+                cond = m.group(2)
+                op = m.group(3)
+                out.write_raw(f"{space}if ({cond}) {{\n")
+                out.write_raw(f"{space}    UPDATE_MISS_STATS({op});\n")
+                out.write_raw(f"{space}    assert(_PyOpcode_Deopt[opcode] == ({op}));\n")
+                out.write_raw(f"{space}    JUMP_TO_PREDICTED({op});\n")
+                out.write_raw(f"{space}}}\n")
             else:
                 out.write_raw(extra + line)
         out.reset_lineno()
@@ -529,7 +556,7 @@ class Analyzer:
         self.errors += 1
 
     everything: list[
-        parser.InstDef | parser.Super | parser.Macro | OverriddenInstructionPlaceHolder
+        parser.InstDef | parser.Super | parser.Macro | parser.LabelDef | OverriddenInstructionPlaceHolder
     ]
     instrs: dict[str, Instruction]  # Includes ops
     supers: dict[str, parser.Super]
@@ -537,6 +564,7 @@ class Analyzer:
     macros: dict[str, parser.Macro]
     macro_instrs: dict[str, MacroInstruction]
     families: dict[str, parser.Family]
+    labels: dict[str, parser.LabelDef]
 
     def parse(self) -> None:
         """Parse the source text.
@@ -550,6 +578,7 @@ class Analyzer:
         self.supers = {}
         self.macros = {}
         self.families = {}
+        self.labels = {}
 
         instrs_idx: dict[str, int] = dict()
 
@@ -560,7 +589,7 @@ class Analyzer:
         print(
             f"Read {len(self.instrs)} instructions/ops, "
             f"{len(self.supers)} supers, {len(self.macros)} macros, "
-            f"and {len(self.families)} families from {files}",
+            f"{len(self.families)} families and {len(self.labels)} labels from {files}",
             file=sys.stderr,
         )
 
@@ -593,7 +622,7 @@ class Analyzer:
 
         # Parse from start
         psr.setpos(start)
-        thing: parser.InstDef | parser.Super | parser.Macro | parser.Family | None
+        thing: parser.InstDef | parser.Super | parser.Macro | parser.Family | parser.LabelDef | None
         thing_first_token = psr.peek()
         while thing := psr.definition():
             match thing:
@@ -623,6 +652,9 @@ class Analyzer:
                     self.everything.append(thing)
                 case parser.Family(name):
                     self.families[name] = thing
+                case parser.LabelDef(name):
+                    self.labels[name] = thing
+                    self.everything.append(thing)
                 case _:
                     typing.assert_never(thing)
         if not psr.eof():
@@ -873,7 +905,7 @@ class Analyzer:
         return stack, -lowest
 
     def get_stack_effect_info(
-        self, thing: parser.InstDef | parser.Super | parser.Macro
+        self, thing: parser.InstDef | parser.Super | parser.Macro | parser.LabelDef
     ) -> tuple[AnyInstruction | None, str, str]:
         def effect_str(effects: list[StackEffect]) -> str:
             if getattr(thing, "kind", None) == "legacy":
@@ -920,6 +952,8 @@ class Analyzer:
         pushed_data: list[tuple[AnyInstruction, str]] = []
         for thing in self.everything:
             if isinstance(thing, OverriddenInstructionPlaceHolder):
+                continue
+            if isinstance(thing, LabelDef):
                 continue
             instr, popped, pushed = self.get_stack_effect_info(thing)
             if instr is not None:
@@ -971,6 +1005,8 @@ class Analyzer:
                     format = self.super_instrs[thing.name].instr_fmt
                 case parser.Macro():
                     format = self.macro_instrs[thing.name].instr_fmt
+                case parser.LabelDef():
+                    continue
                 case _:
                     typing.assert_never(thing)
             all_formats.add(format)
@@ -1016,6 +1052,8 @@ class Analyzer:
                         self.write_metadata_for_super(self.super_instrs[thing.name])
                     case parser.Macro():
                         self.write_metadata_for_macro(self.macro_instrs[thing.name])
+                    case parser.LabelDef():
+                        continue
                     case _:
                         typing.assert_never(thing)
 
@@ -1056,6 +1094,7 @@ class Analyzer:
             n_instrs = 0
             n_supers = 0
             n_macros = 0
+            n_labels = 0
             for thing in self.everything:
                 match thing:
                     case OverriddenInstructionPlaceHolder():
@@ -1070,12 +1109,15 @@ class Analyzer:
                     case parser.Macro():
                         n_macros += 1
                         self.write_macro(self.macro_instrs[thing.name])
+                    case parser.LabelDef():
+                        n_labels += 1
+                        self.write_label(self.labels[thing.name])
                     case _:
                         typing.assert_never(thing)
 
         print(
             f"Wrote {n_instrs} instructions, {n_supers} supers, "
-            f"and {n_macros} macros to {self.output_filename}",
+            f"{n_macros} macros, and {n_labels} labels to {self.output_filename}",
             file=sys.stderr,
         )
 
@@ -1096,7 +1138,8 @@ class Analyzer:
             instr.write(self.out)
             if not instr.always_exits:
                 for prediction in instr.predictions:
-                    self.out.emit(f"PREDICT({prediction});")
+                    self.out.emit(f"if (0) JUMP_TO_PREDICTED({prediction});");
+                    # self.out.emit(f"PREDICT({prediction});")
                 if instr.check_eval_breaker:
                     self.out.emit("CHECK_EVAL_BREAKER();")
                 self.out.emit(f"DISPATCH();")
@@ -1105,6 +1148,12 @@ class Analyzer:
         """Write code for a super-instruction."""
         with self.wrap_super_or_macro(sup):
             first = True
+            self.out.emit(f"#if Py_TAIL_CALL_INTERP")
+            self.out.emit(f"int opcode = {sup.name};")
+            self.out.emit(f"(void)(opcode);")
+            self.out.emit(f"#endif")
+            self.out.emit(f"INSTRUCTION_START({sup.name});")
+            # self.out.emit(f"printf(\"execute {sup.name}\\n\");")
             for comp in sup.parts:
                 if not first:
                     self.out.emit("oparg = (next_instr++)->op.arg;")
@@ -1119,6 +1168,12 @@ class Analyzer:
         last_instr: Instruction | None = None
         with self.wrap_super_or_macro(mac):
             cache_adjust = 0
+            self.out.emit(f"#if Py_TAIL_CALL_INTERP")
+            self.out.emit(f"int opcode = {mac.name};")
+            self.out.emit(f"(void)(opcode);")
+            self.out.emit(f"#endif")
+            self.out.emit(f"INSTRUCTION_START({mac.name});")
+            # self.out.emit(f"printf(\"execute {mac.name}\\n\");")
             for part in mac.parts:
                 match part:
                     case parser.CacheEffect(size=size):
@@ -1141,6 +1196,18 @@ class Analyzer:
                     f"static_assert({cache_size} == "
                     f'{cache_adjust}, "incorrect cache size");'
                 )
+
+    def write_label(self, label: LabelDef) -> None:
+        """Write code for a label instruction."""
+        name = label.name
+        self.out.emit("")
+        with self.out.block(f"LABEL({name})"):
+            block_text, _, _, _ = extract_block_text(label.block)
+            regex = re.compile(r'goto\s+(\w+)')
+            for line in block_text:
+                if m := regex.search(line):
+                    line = regex.sub(f"JUMP_TO_LABEL({m.group(1)})", line)
+                self.out.write_raw(line)
 
     @contextlib.contextmanager
     def wrap_super_or_macro(self, up: SuperOrMacroInstruction):

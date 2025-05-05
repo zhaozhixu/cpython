@@ -81,6 +81,9 @@ opmap = { pattern.replace("\\", "") or '\\' : op for op, pattern in operators.it
 macro = r'# *(ifdef|ifndef|undef|define|error|endif|if|else|include|#)'
 MACRO = 'MACRO'
 
+# A label in the DSL
+LABEL = "LABEL"
+
 id_re = r'[a-zA-Z_][0-9a-zA-Z_]*'
 IDENTIFIER = 'IDENTIFIER'
 
@@ -123,7 +126,7 @@ kwds = (
     'REGISTER', 'OFFSETOF',
     'RESTRICT', 'RETURN', 'SHORT', 'SIGNED', 'SIZEOF', 'STATIC', 'STRUCT',
     'SWITCH', 'TYPEDEF', 'UNION', 'UNSIGNED', 'VOID',
-    'VOLATILE', 'WHILE'
+    'VOLATILE', 'WHILE', 'LABEL'
 )
 for name in kwds:
     globals()[name] = name

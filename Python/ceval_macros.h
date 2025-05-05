@@ -71,17 +71,63 @@
 #define INSTRUCTION_START(op) (frame->prev_instr = next_instr++)
 #endif
 
-#if USE_COMPUTED_GOTOS
+
+#ifdef LLTRACE
+#define TAIL_CALL_PARAMS _PyInterpreterFrame *frame, PyObject **stack_pointer, PyThreadState *tstate, _Py_CODEUNIT *next_instr, int oparg,  _PyCFrame *cframe, _PyInterpreterFrame *entry_frame, PyObject *kwnames, int *lltrace_p
+#define TAIL_CALL_ARGS frame, stack_pointer, tstate, next_instr, oparg, cframe, entry_frame, kwnames, lltrace_p
+#else
+#define TAIL_CALL_PARAMS _PyInterpreterFrame *frame, PyObject **stack_pointer, PyThreadState *tstate, _Py_CODEUNIT *next_instr, int oparg,  _PyCFrame *cframe, _PyInterpreterFrame *entry_frame, PyObject *kwnames
+#define TAIL_CALL_ARGS frame, stack_pointer, tstate, next_instr, oparg, cframe, entry_frame, kwnames
+#endif
+
+#if Py_TAIL_CALL_INTERP
+    // Note: [[clang::musttail]] works for GCC 15, but not __attribute__((musttail)) at the moment.
+#   define Py_MUSTTAIL [[clang::musttail]]
+#   define Py_PRESERVE_NONE_CC __attribute__((preserve_none))
+    Py_PRESERVE_NONE_CC typedef PyObject* (*py_tail_call_funcptr)(TAIL_CALL_PARAMS);
+
+#   define TARGET(op) Py_PRESERVE_NONE_CC PyObject *_TAIL_CALL_##op(TAIL_CALL_PARAMS)
+#   define DISPATCH_GOTO() \
+        do { \
+            Py_MUSTTAIL return (INSTRUCTION_TABLE[opcode])(TAIL_CALL_ARGS); \
+        } while (0)
+#define JUMP_TO_LABEL(name)                                                \
+      do {                                                                     \
+        Py_MUSTTAIL return (_TAIL_CALL_##name)(TAIL_CALL_ARGS);                \
+      } while (0)
+#ifdef LLTRACE
+#   define JUMP_TO_PREDICTED(name)                                      \
+    do {                                                                \
+        Py_MUSTTAIL return (_TAIL_CALL_##name)(frame, stack_pointer, tstate, \
+                                               this_instr, oparg, \
+                                               cframe, entry_frame, kwnames, lltrace_p); \
+    } while (0)
+#else
+#   define JUMP_TO_PREDICTED(name)                                      \
+    do {                                                                \
+        Py_MUSTTAIL return (_TAIL_CALL_##name)(frame, stack_pointer, tstate, \
+                                               this_instr, oparg, \
+                                               cframe, entry_frame, kwnames); \
+    } while (0)
+#endif
+#    define LABEL(name) TARGET(name)
+#elif USE_COMPUTED_GOTOS
 #  define TARGET(op) TARGET_##op: INSTRUCTION_START(op);
 #  define DISPATCH_GOTO() goto *opcode_targets[opcode]
+#  define JUMP_TO_LABEL(name) goto name;
+#  define JUMP_TO_PREDICTED(name) goto PRED_##name;
+#  define LABEL(name) name:
 #else
 #  define TARGET(op) case op: TARGET_##op: INSTRUCTION_START(op);
 #  define DISPATCH_GOTO() goto dispatch_opcode
+#  define JUMP_TO_LABEL(name) goto name;
+#  define JUMP_TO_PREDICTED(name) goto PRED_##name;
+#  define LABEL(name) name:
 #endif
 
 /* PRE_DISPATCH_GOTO() does lltrace if enabled. Normally a no-op */
 #ifdef LLTRACE
-#define PRE_DISPATCH_GOTO() if (lltrace) { \
+#define PRE_DISPATCH_GOTO() if (*lltrace_p) { \
     lltrace_instruction(frame, stack_pointer, next_instr); }
 #else
 #define PRE_DISPATCH_GOTO() ((void)0)
@@ -109,15 +155,15 @@
         _PyFrame_SetStackPointer(frame, stack_pointer); \
         frame->prev_instr = next_instr - 1;             \
         (NEW_FRAME)->previous = frame;                  \
-        frame = cframe.current_frame = (NEW_FRAME);     \
+        frame = cframe->current_frame = (NEW_FRAME);    \
         CALL_STAT_INC(inlined_py_calls);                \
-        goto start_frame;                               \
+        JUMP_TO_LABEL(start_frame);                     \
     } while (0)
 
 #define CHECK_EVAL_BREAKER() \
     _Py_CHECK_EMSCRIPTEN_SIGNALS_PERIODICALLY(); \
     if (_Py_atomic_load_relaxed_int32(&tstate->interp->ceval.eval_breaker)) { \
-        goto handle_eval_breaker; \
+        JUMP_TO_LABEL(handle_eval_breaker); \
     }
 
 
@@ -176,7 +222,7 @@ GETITEM(PyObject *v, Py_ssize_t i) {
 #define PREDICT_ID(op)          PRED_##op
 
 #if USE_COMPUTED_GOTOS
-#define PREDICT(op)             if (0) goto PREDICT_ID(op)
+#define PREDICT(op)             if (0) JUMP_TO_PREDICTED(op)
 #else
 #define PREDICT(next_op) \
     do { \
@@ -185,7 +231,7 @@ GETITEM(PyObject *v, Py_ssize_t i) {
         if (opcode == next_op) { \
             oparg = word.op.arg; \
             INSTRUCTION_START(next_op); \
-            goto PREDICT_ID(next_op); \
+            JUMP_TO_PREDICTED(next_op); \
         } \
     } while(0)
 #endif
@@ -248,7 +294,7 @@ GETITEM(PyObject *v, Py_ssize_t i) {
                                      GETLOCAL(i) = value; \
                                      Py_XDECREF(tmp); } while (0)
 
-#define GO_TO_INSTRUCTION(op) goto PREDICT_ID(op)
+#define GO_TO_INSTRUCTION(op) JUMP_TO_PREDICTED(op)
 
 #ifdef Py_STATS
 #define UPDATE_MISS_STATS(INSTNAME)                              \
@@ -273,7 +319,7 @@ GETITEM(PyObject *v, Py_ssize_t i) {
         /* This is only a single jump on release builds! */ \
         UPDATE_MISS_STATS((INSTNAME));                      \
         assert(_PyOpcode_Deopt[opcode] == (INSTNAME));      \
-        GO_TO_INSTRUCTION(INSTNAME);                        \
+        JUMP_TO_PREDICTED(INSTNAME);                        \
     }
 
 
@@ -323,7 +369,7 @@ do { \
     }\
     else { \
         result = PyFloat_FromDouble(dval); \
-        if ((result) == NULL) goto error; \
+        if ((result) == NULL) JUMP_TO_LABEL(error); \
         _Py_DECREF_NO_DEALLOC(left); \
         _Py_DECREF_NO_DEALLOC(right); \
     } \
@@ -339,6 +385,6 @@ do { \
     stack_pointer = _PyFrame_GetStackPointer(frame); \
     if (next_instr == NULL) { \
         next_instr = (dest)+1; \
-        goto error; \
+        JUMP_TO_LABEL(error);  \
     } \
 } while (0);
