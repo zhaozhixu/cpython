@@ -8,6 +8,8 @@
             int opcode = NOP;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(NOP);
@@ -19,6 +21,8 @@
             int opcode = RESUME;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(RESUME);
@@ -41,6 +45,8 @@
             int opcode = INSTRUMENTED_RESUME;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_RESUME);
@@ -77,6 +83,8 @@
             int opcode = LOAD_CLOSURE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_CLOSURE);
@@ -95,6 +103,8 @@
             int opcode = LOAD_FAST_CHECK;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_FAST_CHECK);
@@ -112,6 +122,8 @@
             int opcode = LOAD_FAST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_FAST);
@@ -129,6 +141,8 @@
             int opcode = LOAD_FAST_AND_CLEAR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_FAST_AND_CLEAR);
@@ -147,6 +161,8 @@
             int opcode = LOAD_CONST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_CONST);
@@ -163,6 +179,8 @@
             int opcode = STORE_FAST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_FAST);
@@ -306,6 +324,8 @@
             int opcode = POP_TOP;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(POP_TOP);
@@ -320,6 +340,8 @@
             int opcode = PUSH_NULL;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(PUSH_NULL);
@@ -355,6 +377,8 @@
             int opcode = INSTRUMENTED_END_FOR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_END_FOR);
@@ -380,6 +404,8 @@
             int opcode = END_SEND;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(END_SEND);
@@ -396,6 +422,8 @@
             int opcode = INSTRUMENTED_END_SEND;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_END_SEND);
@@ -419,6 +447,8 @@
             int opcode = UNARY_NEGATIVE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(UNARY_NEGATIVE);
@@ -436,6 +466,8 @@
             int opcode = UNARY_NOT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(UNARY_NOT);
@@ -459,6 +491,8 @@
             int opcode = UNARY_INVERT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(UNARY_INVERT);
@@ -476,6 +510,8 @@
             int opcode = BINARY_OP_MULTIPLY_INT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_OP_MULTIPLY_INT);
@@ -508,6 +544,8 @@
             int opcode = BINARY_OP_MULTIPLY_FLOAT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_OP_MULTIPLY_FLOAT);
@@ -539,6 +577,8 @@
             int opcode = BINARY_OP_SUBTRACT_INT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_OP_SUBTRACT_INT);
@@ -571,6 +611,8 @@
             int opcode = BINARY_OP_SUBTRACT_FLOAT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_OP_SUBTRACT_FLOAT);
@@ -601,6 +643,8 @@
             int opcode = BINARY_OP_ADD_UNICODE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_OP_ADD_UNICODE);
@@ -633,6 +677,8 @@
             int opcode = BINARY_OP_INPLACE_ADD_UNICODE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_OP_INPLACE_ADD_UNICODE);
@@ -685,6 +731,8 @@
             int opcode = BINARY_OP_ADD_FLOAT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_OP_ADD_FLOAT);
@@ -716,6 +764,8 @@
             int opcode = BINARY_OP_ADD_INT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_OP_ADD_INT);
@@ -750,6 +800,8 @@
             int opcode = BINARY_SUBSCR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_SUBSCR);
@@ -781,6 +833,8 @@
             int opcode = BINARY_SLICE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_SLICE);
@@ -810,6 +864,8 @@
             int opcode = STORE_SLICE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_SLICE);
@@ -838,6 +894,8 @@
             int opcode = BINARY_SUBSCR_LIST_INT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_SUBSCR_LIST_INT);
@@ -884,6 +942,8 @@
             int opcode = BINARY_SUBSCR_TUPLE_INT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_SUBSCR_TUPLE_INT);
@@ -930,6 +990,8 @@
             int opcode = BINARY_SUBSCR_DICT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_SUBSCR_DICT);
@@ -965,6 +1027,8 @@
             int opcode = BINARY_SUBSCR_GETITEM;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_SUBSCR_GETITEM);
@@ -1019,6 +1083,8 @@
             int opcode = LIST_APPEND;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LIST_APPEND);
@@ -1035,6 +1101,8 @@
             int opcode = SET_ADD;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(SET_ADD);
@@ -1055,6 +1123,8 @@
             int opcode = STORE_SUBSCR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_SUBSCR);
@@ -1090,6 +1160,8 @@
             int opcode = STORE_SUBSCR_LIST_INT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_SUBSCR_LIST_INT);
@@ -1138,6 +1210,8 @@
             int opcode = STORE_SUBSCR_DICT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_SUBSCR_DICT);
@@ -1163,6 +1237,8 @@
             int opcode = DELETE_SUBSCR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(DELETE_SUBSCR);
@@ -1182,6 +1258,8 @@
             int opcode = CALL_INTRINSIC_1;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_INTRINSIC_1);
@@ -1200,6 +1278,8 @@
             int opcode = CALL_INTRINSIC_2;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_INTRINSIC_2);
@@ -1221,6 +1301,8 @@
             int opcode = RAISE_VARARGS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(RAISE_VARARGS);
@@ -1253,6 +1335,8 @@
             int opcode = INTERPRETER_EXIT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INTERPRETER_EXIT);
@@ -1274,6 +1358,8 @@
             int opcode = RETURN_VALUE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(RETURN_VALUE);
@@ -1297,6 +1383,8 @@
             int opcode = INSTRUMENTED_RETURN_VALUE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_RETURN_VALUE);
@@ -1324,6 +1412,8 @@
             int opcode = RETURN_CONST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(RETURN_CONST);
@@ -1347,6 +1437,8 @@
             int opcode = INSTRUMENTED_RETURN_CONST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_RETURN_CONST);
@@ -1374,6 +1466,8 @@
             int opcode = GET_AITER;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(GET_AITER);
@@ -1418,6 +1512,8 @@
             int opcode = GET_ANEXT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(GET_ANEXT);
@@ -1478,6 +1574,8 @@
             int opcode = GET_AWAITABLE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(GET_AWAITABLE);
@@ -1519,6 +1617,8 @@
             int opcode = SEND;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(SEND);
@@ -1581,6 +1681,8 @@
             int opcode = SEND_GEN;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(SEND_GEN);
@@ -1619,6 +1721,8 @@
             int opcode = INSTRUMENTED_YIELD_VALUE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_YIELD_VALUE);
@@ -1646,6 +1750,8 @@
             int opcode = YIELD_VALUE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(YIELD_VALUE);
@@ -1672,6 +1778,8 @@
             int opcode = POP_EXCEPT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(POP_EXCEPT);
@@ -1687,6 +1795,8 @@
             int opcode = RERAISE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(RERAISE);
@@ -1717,6 +1827,8 @@
             int opcode = END_ASYNC_FOR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(END_ASYNC_FOR);
@@ -1742,6 +1854,8 @@
             int opcode = CLEANUP_THROW;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CLEANUP_THROW);
@@ -1777,6 +1891,8 @@
             int opcode = LOAD_ASSERTION_ERROR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ASSERTION_ERROR);
@@ -1792,6 +1908,8 @@
             int opcode = LOAD_BUILD_CLASS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_BUILD_CLASS);
@@ -1827,6 +1945,8 @@
             int opcode = STORE_NAME;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_NAME);
@@ -1855,6 +1975,8 @@
             int opcode = DELETE_NAME;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(DELETE_NAME);
@@ -1884,6 +2006,8 @@
             int opcode = UNPACK_SEQUENCE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(UNPACK_SEQUENCE);
@@ -1913,6 +2037,8 @@
             int opcode = UNPACK_SEQUENCE_TWO_TUPLE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(UNPACK_SEQUENCE_TWO_TUPLE);
@@ -1944,6 +2070,8 @@
             int opcode = UNPACK_SEQUENCE_TUPLE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(UNPACK_SEQUENCE_TUPLE);
@@ -1976,6 +2104,8 @@
             int opcode = UNPACK_SEQUENCE_LIST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(UNPACK_SEQUENCE_LIST);
@@ -2008,6 +2138,8 @@
             int opcode = UNPACK_EX;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(UNPACK_EX);
@@ -2028,6 +2160,8 @@
             int opcode = STORE_ATTR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_ATTR);
@@ -2062,6 +2196,8 @@
             int opcode = DELETE_ATTR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(DELETE_ATTR);
@@ -2079,6 +2215,8 @@
             int opcode = STORE_GLOBAL;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_GLOBAL);
@@ -2096,6 +2234,8 @@
             int opcode = DELETE_GLOBAL;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(DELETE_GLOBAL);
@@ -2118,6 +2258,8 @@
             int opcode = LOAD_LOCALS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_LOCALS);
@@ -2139,6 +2281,8 @@
             int opcode = LOAD_FROM_DICT_OR_GLOBALS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_FROM_DICT_OR_GLOBALS);
@@ -2215,6 +2359,8 @@
             int opcode = LOAD_NAME;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_NAME);
@@ -2290,6 +2436,8 @@
             int opcode = LOAD_GLOBAL;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_GLOBAL);
@@ -2359,6 +2507,8 @@
             int opcode = LOAD_GLOBAL_MODULE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_GLOBAL_MODULE);
@@ -2401,6 +2551,8 @@
             int opcode = LOAD_GLOBAL_BUILTIN;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_GLOBAL_BUILTIN);
@@ -2456,6 +2608,8 @@
             int opcode = DELETE_FAST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(DELETE_FAST);
@@ -2470,6 +2624,8 @@
             int opcode = MAKE_CELL;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(MAKE_CELL);
@@ -2489,6 +2645,8 @@
             int opcode = DELETE_DEREF;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(DELETE_DEREF);
@@ -2510,6 +2668,8 @@
             int opcode = LOAD_FROM_DICT_OR_DEREF;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_FROM_DICT_OR_DEREF);
@@ -2556,6 +2716,8 @@
             int opcode = LOAD_DEREF;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_DEREF);
@@ -2577,6 +2739,8 @@
             int opcode = STORE_DEREF;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_DEREF);
@@ -2594,6 +2758,8 @@
             int opcode = COPY_FREE_VARS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(COPY_FREE_VARS);
@@ -2615,6 +2781,8 @@
             int opcode = BUILD_STRING;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BUILD_STRING);
@@ -2636,6 +2804,8 @@
             int opcode = BUILD_TUPLE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BUILD_TUPLE);
@@ -2654,6 +2824,8 @@
             int opcode = BUILD_LIST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BUILD_LIST);
@@ -2672,6 +2844,8 @@
             int opcode = LIST_EXTEND;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LIST_EXTEND);
@@ -2701,6 +2875,8 @@
             int opcode = SET_UPDATE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(SET_UPDATE);
@@ -2718,6 +2894,8 @@
             int opcode = BUILD_SET;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BUILD_SET);
@@ -2748,6 +2926,8 @@
             int opcode = BUILD_MAP;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BUILD_MAP);
@@ -2772,6 +2952,8 @@
             int opcode = SETUP_ANNOTATIONS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(SETUP_ANNOTATIONS);
@@ -2822,6 +3004,8 @@
             int opcode = BUILD_CONST_KEY_MAP;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BUILD_CONST_KEY_MAP);
@@ -2852,6 +3036,8 @@
             int opcode = DICT_UPDATE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(DICT_UPDATE);
@@ -2876,6 +3062,8 @@
             int opcode = DICT_MERGE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(DICT_MERGE);
@@ -2898,6 +3086,8 @@
             int opcode = MAP_ADD;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(MAP_ADD);
@@ -2918,6 +3108,8 @@
             int opcode = INSTRUMENTED_LOAD_SUPER_ATTR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_LOAD_SUPER_ATTR);
@@ -2939,6 +3131,8 @@
             int opcode = LOAD_SUPER_ATTR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_SUPER_ATTR);
@@ -3008,6 +3202,8 @@
             int opcode = LOAD_SUPER_ATTR_ATTR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_SUPER_ATTR_ATTR);
@@ -3047,6 +3243,8 @@
             int opcode = LOAD_SUPER_ATTR_METHOD;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_SUPER_ATTR_METHOD);
@@ -3099,6 +3297,8 @@
             int opcode = LOAD_ATTR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR);
@@ -3162,6 +3362,8 @@
             int opcode = LOAD_ATTR_INSTANCE_VALUE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR_INSTANCE_VALUE);
@@ -3207,6 +3409,8 @@
             int opcode = LOAD_ATTR_MODULE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR_MODULE);
@@ -3252,6 +3456,8 @@
             int opcode = LOAD_ATTR_WITH_HINT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR_WITH_HINT);
@@ -3327,6 +3533,8 @@
             int opcode = LOAD_ATTR_SLOT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR_SLOT);
@@ -3365,6 +3573,8 @@
             int opcode = LOAD_ATTR_CLASS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR_CLASS);
@@ -3404,6 +3614,8 @@
             int opcode = LOAD_ATTR_PROPERTY;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR_PROPERTY);
@@ -3457,6 +3669,8 @@
             int opcode = LOAD_ATTR_GETATTRIBUTE_OVERRIDDEN;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR_GETATTRIBUTE_OVERRIDDEN);
@@ -3512,6 +3726,8 @@
             int opcode = STORE_ATTR_INSTANCE_VALUE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_ATTR_INSTANCE_VALUE);
@@ -3554,6 +3770,8 @@
             int opcode = STORE_ATTR_WITH_HINT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_ATTR_WITH_HINT);
@@ -3642,6 +3860,8 @@
             int opcode = STORE_ATTR_SLOT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(STORE_ATTR_SLOT);
@@ -3674,6 +3894,8 @@
             int opcode = COMPARE_OP;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(COMPARE_OP);
@@ -3706,6 +3928,8 @@
             int opcode = COMPARE_OP_FLOAT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(COMPARE_OP_FLOAT);
@@ -3741,6 +3965,8 @@
             int opcode = COMPARE_OP_INT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(COMPARE_OP_INT);
@@ -3788,6 +4014,8 @@
             int opcode = COMPARE_OP_STR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(COMPARE_OP_STR);
@@ -3824,6 +4052,8 @@
             int opcode = IS_OP;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(IS_OP);
@@ -3844,6 +4074,8 @@
             int opcode = CONTAINS_OP;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CONTAINS_OP);
@@ -3865,6 +4097,8 @@
             int opcode = CHECK_EG_MATCH;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CHECK_EG_MATCH);
@@ -3902,6 +4136,8 @@
             int opcode = CHECK_EXC_MATCH;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CHECK_EXC_MATCH);
@@ -3926,6 +4162,8 @@
             int opcode = IMPORT_NAME;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(IMPORT_NAME);
@@ -3947,6 +4185,8 @@
             int opcode = IMPORT_FROM;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(IMPORT_FROM);
@@ -3965,6 +4205,8 @@
             int opcode = JUMP_FORWARD;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(JUMP_FORWARD);
@@ -3978,6 +4220,8 @@
             int opcode = JUMP_BACKWARD;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(JUMP_BACKWARD);
@@ -3993,6 +4237,8 @@
             int opcode = POP_JUMP_IF_FALSE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(POP_JUMP_IF_FALSE);
@@ -4019,6 +4265,8 @@
             int opcode = POP_JUMP_IF_TRUE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(POP_JUMP_IF_TRUE);
@@ -4045,6 +4293,8 @@
             int opcode = POP_JUMP_IF_NOT_NONE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(POP_JUMP_IF_NOT_NONE);
@@ -4062,6 +4312,8 @@
             int opcode = POP_JUMP_IF_NONE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(POP_JUMP_IF_NONE);
@@ -4081,6 +4333,8 @@
             int opcode = JUMP_BACKWARD_NO_INTERRUPT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(JUMP_BACKWARD_NO_INTERRUPT);
@@ -4098,6 +4352,8 @@
             int opcode = GET_LEN;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(GET_LEN);
@@ -4118,6 +4374,8 @@
             int opcode = MATCH_CLASS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(MATCH_CLASS);
@@ -4149,6 +4407,8 @@
             int opcode = MATCH_MAPPING;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(MATCH_MAPPING);
@@ -4167,6 +4427,8 @@
             int opcode = MATCH_SEQUENCE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(MATCH_SEQUENCE);
@@ -4185,6 +4447,8 @@
             int opcode = MATCH_KEYS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(MATCH_KEYS);
@@ -4204,6 +4468,8 @@
             int opcode = GET_ITER;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(GET_ITER);
@@ -4222,6 +4488,8 @@
             int opcode = GET_YIELD_FROM_ITER;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(GET_YIELD_FROM_ITER);
@@ -4263,6 +4531,8 @@
             int opcode = FOR_ITER;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(FOR_ITER);
@@ -4309,6 +4579,8 @@
             int opcode = INSTRUMENTED_FOR_ITER;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_FOR_ITER);
@@ -4345,6 +4617,8 @@
             int opcode = FOR_ITER_LIST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(FOR_ITER_LIST);
@@ -4384,6 +4658,8 @@
             int opcode = FOR_ITER_TUPLE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(FOR_ITER_TUPLE);
@@ -4423,6 +4699,8 @@
             int opcode = FOR_ITER_RANGE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(FOR_ITER_RANGE);
@@ -4460,6 +4738,8 @@
             int opcode = FOR_ITER_GEN;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(FOR_ITER_GEN);
@@ -4498,6 +4778,8 @@
             int opcode = BEFORE_ASYNC_WITH;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BEFORE_ASYNC_WITH);
@@ -4545,6 +4827,8 @@
             int opcode = BEFORE_WITH;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BEFORE_WITH);
@@ -4594,6 +4878,8 @@
             int opcode = WITH_EXCEPT_START;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(WITH_EXCEPT_START);
@@ -4636,6 +4922,8 @@
             int opcode = PUSH_EXC_INFO;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(PUSH_EXC_INFO);
@@ -4661,6 +4949,8 @@
             int opcode = LOAD_ATTR_METHOD_WITH_VALUES;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR_METHOD_WITH_VALUES);
@@ -4709,6 +4999,8 @@
             int opcode = LOAD_ATTR_METHOD_NO_DICT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR_METHOD_NO_DICT);
@@ -4742,6 +5034,8 @@
             int opcode = LOAD_ATTR_METHOD_LAZY_DICT;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(LOAD_ATTR_METHOD_LAZY_DICT);
@@ -4783,6 +5077,8 @@
             int opcode = KW_NAMES;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(KW_NAMES);
@@ -4797,6 +5093,8 @@
             int opcode = INSTRUMENTED_CALL;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_CALL);
@@ -4822,6 +5120,8 @@
             int opcode = CALL;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL);
@@ -4923,6 +5223,8 @@
             int opcode = CALL_BOUND_METHOD_EXACT_ARGS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_BOUND_METHOD_EXACT_ARGS);
@@ -4956,6 +5258,8 @@
             int opcode = CALL_PY_EXACT_ARGS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_PY_EXACT_ARGS);
@@ -5015,6 +5319,8 @@
             int opcode = CALL_PY_WITH_DEFAULTS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_PY_WITH_DEFAULTS);
@@ -5088,6 +5394,8 @@
             int opcode = CALL_NO_KW_TYPE_1;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_TYPE_1);
@@ -5124,6 +5432,8 @@
             int opcode = CALL_NO_KW_STR_1;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_STR_1);
@@ -5162,6 +5472,8 @@
             int opcode = CALL_NO_KW_TUPLE_1;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_TUPLE_1);
@@ -5200,6 +5512,8 @@
             int opcode = CALL_BUILTIN_CLASS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_BUILTIN_CLASS);
@@ -5249,6 +5563,8 @@
             int opcode = CALL_NO_KW_BUILTIN_O;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_BUILTIN_O);
@@ -5308,6 +5624,8 @@
             int opcode = CALL_NO_KW_BUILTIN_FAST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_BUILTIN_FAST);
@@ -5367,6 +5685,8 @@
             int opcode = CALL_BUILTIN_FAST_WITH_KEYWORDS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_BUILTIN_FAST_WITH_KEYWORDS);
@@ -5425,6 +5745,8 @@
             int opcode = CALL_NO_KW_LEN;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_LEN);
@@ -5476,6 +5798,8 @@
             int opcode = CALL_NO_KW_ISINSTANCE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_ISINSTANCE);
@@ -5529,6 +5853,8 @@
             int opcode = CALL_NO_KW_LIST_APPEND;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_LIST_APPEND);
@@ -5567,6 +5893,8 @@
             int opcode = CALL_NO_KW_METHOD_DESCRIPTOR_O;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_METHOD_DESCRIPTOR_O);
@@ -5632,6 +5960,8 @@
             int opcode = CALL_METHOD_DESCRIPTOR_FAST_WITH_KEYWORDS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_METHOD_DESCRIPTOR_FAST_WITH_KEYWORDS);
@@ -5691,6 +6021,8 @@
             int opcode = CALL_NO_KW_METHOD_DESCRIPTOR_NOARGS;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_METHOD_DESCRIPTOR_NOARGS);
@@ -5754,6 +6086,8 @@
             int opcode = CALL_NO_KW_METHOD_DESCRIPTOR_FAST;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_NO_KW_METHOD_DESCRIPTOR_FAST);
@@ -5812,6 +6146,8 @@
             int opcode = INSTRUMENTED_CALL_FUNCTION_EX;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_CALL_FUNCTION_EX);
@@ -5825,6 +6161,8 @@
             int opcode = CALL_FUNCTION_EX;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CALL_FUNCTION_EX);
@@ -5910,6 +6248,8 @@
             int opcode = MAKE_FUNCTION;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(MAKE_FUNCTION);
@@ -5957,6 +6297,8 @@
             int opcode = RETURN_GENERATOR;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(RETURN_GENERATOR);
@@ -5987,6 +6329,8 @@
             int opcode = BUILD_SLICE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BUILD_SLICE);
@@ -6010,6 +6354,8 @@
             int opcode = FORMAT_VALUE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(FORMAT_VALUE);
@@ -6060,6 +6406,8 @@
             int opcode = COPY;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(COPY);
@@ -6079,6 +6427,8 @@
             int opcode = BINARY_OP;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(BINARY_OP);
@@ -6113,6 +6463,8 @@
             int opcode = SWAP;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(SWAP);
@@ -6129,6 +6481,8 @@
             int opcode = INSTRUMENTED_INSTRUCTION;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_INSTRUCTION);
@@ -6150,6 +6504,8 @@
             int opcode = INSTRUMENTED_JUMP_FORWARD;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_JUMP_FORWARD);
@@ -6162,6 +6518,8 @@
             int opcode = INSTRUMENTED_JUMP_BACKWARD;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_JUMP_BACKWARD);
@@ -6175,6 +6533,8 @@
             int opcode = INSTRUMENTED_POP_JUMP_IF_TRUE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_POP_JUMP_IF_TRUE);
@@ -6194,6 +6554,8 @@
             int opcode = INSTRUMENTED_POP_JUMP_IF_FALSE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_POP_JUMP_IF_FALSE);
@@ -6213,6 +6575,8 @@
             int opcode = INSTRUMENTED_POP_JUMP_IF_NONE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_POP_JUMP_IF_NONE);
@@ -6235,6 +6599,8 @@
             int opcode = INSTRUMENTED_POP_JUMP_IF_NOT_NONE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_POP_JUMP_IF_NOT_NONE);
@@ -6257,6 +6623,8 @@
             int opcode = EXTENDED_ARG;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(EXTENDED_ARG);
@@ -6272,6 +6640,8 @@
             int opcode = CACHE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(CACHE);
@@ -6284,6 +6654,8 @@
             int opcode = RESERVED;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(RESERVED);
@@ -6296,14 +6668,31 @@
             int opcode = INSTRUMENTED_LINE;
             (void)(opcode);
             #endif
+            _Py_CODEUNIT* const prev_instr = frame->prev_instr;
+            (void)prev_instr;
             _Py_CODEUNIT* const this_instr = next_instr;
             (void)this_instr;
             INSTRUCTION_START(INSTRUMENTED_LINE);
-#if Py_TAIL_CALL_INTERP
-            assert(0 && "Executing INSTRUMENTED_LINE with Py_TAIL_CALL_INTERP is not supported.");
-            Py_UNREACHABLE();
-#endif
-            DISPATCH();
+            _PyFrame_SetStackPointer(frame, stack_pointer);
+            int original_opcode = _Py_call_instrumentation_line(
+                tstate, frame, this_instr, prev_instr);
+            stack_pointer = _PyFrame_GetStackPointer(frame);
+            if (original_opcode < 0) {
+                next_instr = this_instr+1;
+                JUMP_TO_LABEL(error);
+            }
+            next_instr = frame->prev_instr;
+            if (next_instr != this_instr) {
+                DISPATCH();
+            }
+            if (_PyOpcode_Caches[original_opcode]) {
+                _PyBinaryOpCache *cache = (_PyBinaryOpCache *)(next_instr+1);
+                /* Prevent the underlying instruction from specializing
+                 * and overwriting the instrumentation. */
+                INCREMENT_ADAPTIVE_COUNTER(cache->counter);
+            }
+            opcode = original_opcode;
+            DISPATCH_GOTO();
         }
 
         LABEL(handle_eval_breaker) {

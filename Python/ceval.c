@@ -682,7 +682,7 @@ _PyEval_EvalFrameDefault(PyThreadState *tstate, _PyInterpreterFrame *frame, int 
 #endif
 
     _PyCFrame cframe;
-    _PyInterpreterFrame  entry_frame;
+    _PyInterpreterFrame entry_frame;
     PyObject *kwnames = NULL; // Borrowed reference. Reset by CALL instructions.
 
     /* WARNING: Because the _PyCFrame lives on the C stack,

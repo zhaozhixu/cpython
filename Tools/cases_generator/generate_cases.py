@@ -301,6 +301,8 @@ class Instruction:
         out.emit(f"int opcode = {self.name};")
         out.emit(f"(void)(opcode);")
         out.emit(f"#endif")
+        out.emit(f"_Py_CODEUNIT* const prev_instr = frame->prev_instr;")
+        out.emit("(void)prev_instr;")
         out.emit(f"_Py_CODEUNIT* const this_instr = next_instr;")
         out.emit("(void)this_instr;")
         out.emit(f"INSTRUCTION_START({self.name});")

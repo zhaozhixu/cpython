@@ -3489,10 +3489,26 @@ dummy_func(
         }
 
         inst(INSTRUMENTED_LINE, ( -- )) {
-#if Py_TAIL_CALL_INTERP
-            assert(0 && "Executing INSTRUMENTED_LINE with Py_TAIL_CALL_INTERP is not supported.");
-            Py_UNREACHABLE();
-#endif
+            _PyFrame_SetStackPointer(frame, stack_pointer);
+            int original_opcode = _Py_call_instrumentation_line(
+                tstate, frame, this_instr, prev_instr);
+            stack_pointer = _PyFrame_GetStackPointer(frame);
+            if (original_opcode < 0) {
+                next_instr = this_instr+1;
+                goto error;
+            }
+            next_instr = frame->prev_instr;
+            if (next_instr != this_instr) {
+                DISPATCH();
+            }
+            if (_PyOpcode_Caches[original_opcode]) {
+                _PyBinaryOpCache *cache = (_PyBinaryOpCache *)(next_instr+1);
+                /* Prevent the underlying instruction from specializing
+                 * and overwriting the instrumentation. */
+                INCREMENT_ADAPTIVE_COUNTER(cache->counter);
+            }
+            opcode = original_opcode;
+            DISPATCH_GOTO();
         }
 
         label(handle_eval_breaker) {
